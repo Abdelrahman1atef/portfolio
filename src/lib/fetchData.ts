@@ -1,4 +1,11 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:5000/api";
+const getBaseUrl = () => {
+  if (process.env.NEXT_PUBLIC_API_URL) return process.env.NEXT_PUBLIC_API_URL;
+  if (typeof window !== 'undefined') return '/api';
+  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}/api`;
+  return "http://127.0.0.1:5000/api";
+};
+
+const API_URL = getBaseUrl();
 
 export async function getAboutData() {
   try {
