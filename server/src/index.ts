@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import serverless from "serverless-http";
 import { connectDB } from "./config/db";
 import { env } from "./config/env";
 
@@ -16,12 +17,15 @@ import uploadRoutes from "./routes/upload";
 
 const app = express();
 
-// Connect to Database
-connectDB();
-
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+// Add a middleware to connect to DB
+app.use(async (_req, _res, next) => {
+  await connectDB();
+  next();
+});
 
 // Routes Middleware
 app.use("/api/auth", authRoutes);
@@ -39,8 +43,13 @@ app.get("/", (_req, res) => {
   res.send("🚀 Portfolio API is running...");
 });
 
-// Start Server
-const PORT = env.port;
-app.listen(PORT, () => {
-  console.log(`🚀 Server running in port ${PORT}`);
-});
+// For local development
+if (process.env.NODE_ENV !== "production") {
+  const PORT = env.port;
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running in port ${PORT}`);
+  });
+}
+
+// Export for Netlify Functions
+export const handler = serverless(app);
