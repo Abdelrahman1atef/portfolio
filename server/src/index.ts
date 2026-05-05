@@ -53,3 +53,6 @@ if (process.env.NODE_ENV !== "production") {
 
 // Export for Netlify Functions
 export const handler = serverless(app);
+
+// Export for Vercel
+export default app;
