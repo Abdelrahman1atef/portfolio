@@ -2,7 +2,7 @@ const getBaseUrl = () => {
   if (process.env.NEXT_PUBLIC_API_URL) return process.env.NEXT_PUBLIC_API_URL;
   if (typeof window !== 'undefined') return '/api';
   if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}/api`;
-  return "http://127.0.0.1:5000/api";
+  return "http://127.0.0.1:3000/api";
 };
 
 const API_URL = getBaseUrl();
