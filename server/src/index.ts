@@ -43,9 +43,9 @@ app.get("/", (_req, res) => {
   res.send("🚀 Portfolio API is running...");
 });
 
-// For local development
-if (process.env.NODE_ENV !== "production") {
-  const PORT = env.port;
+// For local development (only if NOT running inside Next.js)
+if (process.env.NODE_ENV !== "production" && !process.env.NEXT_RUNTIME && !process.env.VERCEL) {
+  const PORT = env.port || 5000;
   app.listen(PORT, () => {
     console.log(`🚀 Server running in port ${PORT}`);
   });
