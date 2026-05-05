@@ -1,4 +1,4 @@
-import app from '../../../server/src/index';
+import app from '../../../api/index';
 
 export const config = {
   api: {
