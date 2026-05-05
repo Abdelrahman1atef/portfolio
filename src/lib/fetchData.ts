@@ -9,7 +9,7 @@ const API_URL = getBaseUrl();
 
 export async function getAboutData() {
   try {
-    const res = await fetch(`${API_URL}/about`, { next: { revalidate: 0 } });
+    const res = await fetch(`${API_URL}/about`, { next: { revalidate: 3600  } });
     if (!res.ok) return null;
     return res.json();
   } catch (error) {
@@ -20,7 +20,7 @@ export async function getAboutData() {
 
 export async function getProjectsData() {
   try {
-    const res = await fetch(`${API_URL}/projects`, { next: { revalidate: 0 } });
+    const res = await fetch(`${API_URL}/projects`, { next: { revalidate: 3600  } });
     if (!res.ok) return [];
     return res.json();
   } catch (error) {
@@ -31,7 +31,7 @@ export async function getProjectsData() {
 
 export async function getProjectBySlug(slug: string) {
   try {
-    const res = await fetch(`${API_URL}/projects/slug/${slug}`, { next: { revalidate: 0 } });
+    const res = await fetch(`${API_URL}/projects/slug/${slug}`, { next: { revalidate: 3600  } });
     if (!res.ok) return null;
     return res.json();
   } catch (error) {
@@ -42,7 +42,7 @@ export async function getProjectBySlug(slug: string) {
 
 export async function getSkillsData() {
   try {
-    const res = await fetch(`${API_URL}/skills`, { next: { revalidate: 0 } });
+    const res = await fetch(`${API_URL}/skills`, { next: { revalidate: 3600  } });
     if (!res.ok) return [];
     return res.json();
   } catch (error) {
@@ -53,7 +53,7 @@ export async function getSkillsData() {
 
 export async function getBlogPosts() {
   try {
-    const res = await fetch(`${API_URL}/blog`, { next: { revalidate: 0 } });
+    const res = await fetch(`${API_URL}/blog`, { next: { revalidate: 3600  } });
     if (!res.ok) return [];
     return res.json();
   } catch (error) {
@@ -64,7 +64,7 @@ export async function getBlogPosts() {
 
 export async function getBlogPostBySlug(slug: string) {
   try {
-    const res = await fetch(`${API_URL}/blog/slug/${slug}`, { next: { revalidate: 0 } });
+    const res = await fetch(`${API_URL}/blog/slug/${slug}`, { next: { revalidate: 3600  } });
     if (!res.ok) return null;
     return res.json();
   } catch (error) {
@@ -75,7 +75,7 @@ export async function getBlogPostBySlug(slug: string) {
 
 export async function getTestimonialsData() {
   try {
-    const res = await fetch(`${API_URL}/testimonials`, { next: { revalidate: 0 } });
+    const res = await fetch(`${API_URL}/testimonials`, { next: { revalidate: 3600  } });
     if (!res.ok) return [];
     return res.json();
   } catch (error) {
@@ -86,7 +86,7 @@ export async function getTestimonialsData() {
 
 export async function getSettingsData() {
   try {
-    const res = await fetch(`${API_URL}/settings`, { next: { revalidate: 0 } });
+    const res = await fetch(`${API_URL}/settings`, { next: { revalidate: 3600  } });
     if (!res.ok) return null;
     return res.json();
   } catch (error) {

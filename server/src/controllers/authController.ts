@@ -39,6 +39,7 @@ export const login = async (req: Request, res: Response) => {
       },
     });
   } catch (error) {
+    console.error("Login error:", error);
     res.status(500).json({ message: "Server error" });
   }
 };
@@ -54,6 +55,7 @@ export const getMe = async (req: AuthRequest, res: Response) => {
       },
     });
   } catch (error) {
+    console.error("getMe error:", error);
     res.status(500).json({ message: "Server error" });
   }
 };
